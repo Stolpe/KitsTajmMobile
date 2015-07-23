@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KitsTajmMobile.Views.WeekPage"
+             xmlns:controls="clr-namespace:KitsTajmMobile.Controls;assembly=KitsTajmMobile"
+             xmlns:viewmodels="clr-namespace:KitsTajmMobile.ViewModels;assembly=KitsTajmMobile">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <x:Int32 x:Key="RowWeek">0</x:Int32>
+      <x:Int32 x:Key="RowHeaders">0</x:Int32>
+      <x:Int32 x:Key="RowFirstProject">1</x:Int32>
+      <x:Int32 x:Key="ColumnProject">0</x:Int32>
+      <x:Int32 x:Key="ColumnActivity">1</x:Int32>
+      <x:Int32 x:Key="ColumnMonday">2</x:Int32>
+      <x:Int32 x:Key="ColumnTuesday">3</x:Int32>
+      <x:Int32 x:Key="ColumnWednesday">4</x:Int32>
+      <x:Int32 x:Key="ColumnThursday">5</x:Int32>
+      <x:Int32 x:Key="ColumnFriday">6</x:Int32>
+      <x:Int32 x:Key="ColumnSaturday">7</x:Int32>
+      <x:Int32 x:Key="ColumnSunday">8</x:Int32>
+      <Style x:Key="WeekNumberLabelStyle" TargetType="Label">
+        <Setter Property="VerticalOptions" Value="Center" />
+      </Style>
+      <Style x:Key="WeekProgressStyle" TargetType="controls:AnimatingProgressBar">
+        <Setter Property="Easing" Value="SinInOut" />
+        <Setter Property="Length" Value="0:0:0.500" />
+      </Style>
+      <Style x:Key="WeekProgressTextStyle" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="Center" />
+      </Style>
+      <Style x:Key="WeekGridStyle" TargetType="Grid">
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+      </Style>
+      <Style x:Key="HeaderLabelStyle" TargetType="Label">
+        <Setter Property="VerticalOptions" Value="Start" />
+      </Style>
+      <Style x:Key="ProjectAndActivityLabelStyle"
+             TargetType="Label"
+             BasedOn="{StaticResource HeaderLabelStyle}">
+        <Setter Property="HorizontalOptions" Value="Start" />
+      </Style>
+      <Style x:Key="DayLabelStyle"
+             TargetType="Label"
+             BasedOn="{StaticResource HeaderLabelStyle}">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Style.Triggers>
+          <DataTrigger TargetType="Label"
+                       Binding="{Binding Type}"
+                       Value="{x:Static viewmodels:WeekViewModel+DateViewModel+DateType.Helgdag}">
+            <Setter Property="BackgroundColor" Value="Red"/>
+          </DataTrigger>
+          <DataTrigger TargetType="Label"
+                       Binding="{Binding Type}"
+                       Value="{x:Static viewmodels:WeekViewModel+DateViewModel+DateType.Helgdagsafton}">
+            <Setter Property="BackgroundColor" Value="Blue"/>
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+      <Style x:Key="ProjectAndActivityPickerStyle" TargetType="Picker">
+        <Setter Property="VerticalOptions" Value="Start" />
+        <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+      </Style>
+      <Style x:Key="DayEntryStyle" TargetType="Entry">
+        <Setter Property="Keyboard" Value="Numeric" />
+        <Setter Property="VerticalOptions" Value="Start" />
+        <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+        <Style.Triggers>
+          <DataTrigger TargetType="Entry"
+                       Binding="{Binding IsValid}"
+                       Value="false">
+            <Setter Property="BackgroundColor" Value="Red" />
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+      <Style x:Key="MonthProgressMonthLabelStyle" TargetType="Label">
+      </Style>
+      <Style x:Key="MonthProgressbarStyle" TargetType="controls:AnimatingProgressBar">
+        <Setter Property="Easing" Value="SinInOut" />
+        <Setter Property="Length" Value="0:0:0.500" />
+      </Style>
+      <Style x:Key="MonthProgressbarTextStyle" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="Center" />
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid BindingContext="{DynamicResource Model}">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+
+      <Label Text="{Binding WeekNumber, StringFormat='Vecka {0}'}"
+             Style="{StaticResource WeekNumberLabelStyle}"
+             Grid.Column="0"
+             Grid.Row="0" />
+      <controls:AnimatingProgressBar AnimatedProgress="{Binding WeekProgress}"
+                                     Style="{StaticResource WeekProgressStyle}"
+                                     Grid.Column="1"
+                                     Grid.Row="0" />
+      <Label Text="{Binding WeekProgressText}"
+             Style="{StaticResource WeekProgressTextStyle}"
+             Grid.Column="1"
+             Grid.Row="0" />
+    </Grid>
+
+    <Grid Style="{StaticResource WeekGridStyle}"
+          x:Name="WeekGrid"
+          Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+    
+      <Label Text="Projekt"
+             Style="{StaticResource ProjectAndActivityLabelStyle}"
+             Grid.Column="{StaticResource ColumnProject}"
+             Grid.Row="{StaticResource RowHeaders}"
+             Grid.RowSpan="2" />
+      <Label Text="Aktivitet"
+             Style="{StaticResource ProjectAndActivityLabelStyle}"
+             Grid.Column="{StaticResource ColumnActivity}"
+             Grid.Row="{StaticResource RowHeaders}"
+             Grid.RowSpan="2" />
+      <Label BindingContext="{Binding Monday}"
+             Style="{StaticResource DayLabelStyle}"
+             Text="{Binding Date, StringFormat='mån
+             {0:dd/MM}'}"
+             Grid.Column="{StaticResource ColumnMonday}"
+             Grid.Row="{StaticResource RowHeaders}" />
+      <Label BindingContext="{Binding Tuesday}"
+             Style="{StaticResource DayLabelStyle}"
+             Text="{Binding Date, StringFormat='tis
+             {0:dd/MM}'}"
+             Grid.Column="{StaticResource ColumnTuesday}"
+             Grid.Row="{StaticResource RowHeaders}" />
+      <Label BindingContext="{Binding Wednesday}"
+             Style="{StaticResource DayLabelStyle}"
+             Text="{Binding Date, StringFormat='ons
+             {0:dd/MM}'}"
+             Grid.Column="{StaticResource ColumnWednesday}"
+             Grid.Row="{StaticResource RowHeaders}" />
+      <Label BindingContext="{Binding Thursday}"
+             Style="{StaticResource DayLabelStyle}"
+             Text="{Binding Date, StringFormat='tors
+             {0:dd/MM}'}"
+             Grid.Column="{StaticResource ColumnThursday}"
+             Grid.Row="{StaticResource RowHeaders}" />
+      <Label BindingContext="{Binding Friday}"
+             Style="{StaticResource DayLabelStyle}"
+             Text="{Binding Date, StringFormat='fre
+             {0:dd/MM}'}"
+             Grid.Column="{StaticResource ColumnFriday}"
+             Grid.Row="{StaticResource RowHeaders}" />
+      <Label BindingContext="{Binding Saturday}"
+             Style="{StaticResource DayLabelStyle}"
+             Text="{Binding Date, StringFormat='lör
+             {0:dd/MM}'}"
+             Grid.Column="{StaticResource ColumnSaturday}"
+             Grid.Row="{StaticResource RowHeaders}" />
+      <Label BindingContext="{Binding Sunday}"
+             Style="{StaticResource DayLabelStyle}"
+             Text="{Binding Date, StringFormat='sön
+             {0:dd/MM}'}"
+             Grid.Column="{StaticResource ColumnSunday}"
+             Grid.Row="{StaticResource RowHeaders}" />
+    </Grid>
+
+    <Grid x:Name="MonthsGrid"
+          Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+    </Grid>
+  </Grid>
+</ContentPage>

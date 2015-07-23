@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KitsTajmMobile.Views.ReportsPage"
+             Title="Rapporter">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid BindingContext="{DynamicResource Model}"
+        x:Name="Gridden">
+    <Label BindingContext="{Binding Text1}"
+           Text="reports"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           Grid.Row="{Binding Row}"
+           Grid.Column="{Binding Column}" />
+    <Label BindingContext="{Binding Text2}"
+           x:Name="Texten2"
+           Text="reports2"
+           VerticalOptions="Center"
+           HorizontalOptions="Center" />
+    <Button BindingContext="{Binding Button}"
+            Text="Test!"
+            x:Name="Knappen"
+            Grid.Row="{Binding Row}"
+            Grid.Column="{Binding Column}" />
+  </Grid>
+</ContentPage>
