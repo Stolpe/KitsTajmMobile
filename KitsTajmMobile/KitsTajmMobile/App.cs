@@ -18,10 +18,10 @@ namespace KitsTajmMobile
 
         public async Task ShowMainPage()
         {
-            var mainpage = new MainPage(this._service);
+            var timepage = new TimePage(this._service);
 
-            this.MainPage = mainpage;
-            await mainpage.Load();
+            this.MainPage = timepage;
+            await timepage.Load();
         }
 
         protected override void OnStart()

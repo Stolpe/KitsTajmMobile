@@ -65,47 +65,8 @@ namespace KitsTajmMobile.Views
 
         private void DrawMonthProgress(TimeViewModel.MonthViewModel month, int row)
         {
-            string monthname = null;
-
-            switch (month.Month)
-            {
-                case 1:
-                    monthname = "januari";
-                    break;
-                case 2:
-                    monthname = "februari";
-                    break;
-                case 3:
-                    monthname = "mars";
-                    break;
-                case 4:
-                    monthname = "april";
-                    break;
-                case 5:
-                    monthname = "maj";
-                    break;
-                case 6:
-                    monthname = "juni";
-                    break;
-                case 7:
-                    monthname = "juli";
-                    break;
-                case 8:
-                    monthname = "augusti";
-                    break;
-                case 9:
-                    monthname = "september";
-                    break;
-                case 10:
-                    monthname = "oktober";
-                    break;
-                case 11:
-                    monthname = "november";
-                    break;
-                case 12:
-                    monthname = "december";
-                    break;
-            }
+            var monthkey = $"Month{month.Month}";
+            var monthname = Strings.Week.ResourceManager.GetString(monthkey);
 
             var monthlabel = new Label
             {

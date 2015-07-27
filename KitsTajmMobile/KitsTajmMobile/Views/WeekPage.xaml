@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KitsTajmMobile.Views.WeekPage"
              xmlns:controls="clr-namespace:KitsTajmMobile.Controls;assembly=KitsTajmMobile"
+             xmlns:strings="clr-namespace:KitsTajmMobile.Strings;assembly=KitsTajmMobile"
              xmlns:viewmodels="clr-namespace:KitsTajmMobile.ViewModels;assembly=KitsTajmMobile">
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -97,7 +98,7 @@
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
 
-      <Label Text="{Binding WeekNumber, StringFormat='Vecka {0}'}"
+      <Label Text="{Binding WeekNumber, StringFormat={x:Static strings:Week.WeekFormat}}"
              Style="{StaticResource WeekNumberLabelStyle}"
              Grid.Column="0"
              Grid.Row="0" />
@@ -126,56 +127,49 @@
         <ColumnDefinition />
       </Grid.ColumnDefinitions>
     
-      <Label Text="Projekt"
+      <Label Text="{x:Static strings:Week.Project}"
              Style="{StaticResource ProjectAndActivityLabelStyle}"
              Grid.Column="{StaticResource ColumnProject}"
              Grid.Row="{StaticResource RowHeaders}"
              Grid.RowSpan="2" />
-      <Label Text="Aktivitet"
+      <Label Text="{x:Static strings:Week.Activity}"
              Style="{StaticResource ProjectAndActivityLabelStyle}"
              Grid.Column="{StaticResource ColumnActivity}"
              Grid.Row="{StaticResource RowHeaders}"
              Grid.RowSpan="2" />
       <Label BindingContext="{Binding Monday}"
              Style="{StaticResource DayLabelStyle}"
-             Text="{Binding Date, StringFormat='mån
-             {0:dd/MM}'}"
+             Text="{Binding Date, StringFormat={x:Static strings:Week.MondayFormat}}"
              Grid.Column="{StaticResource ColumnMonday}"
              Grid.Row="{StaticResource RowHeaders}" />
       <Label BindingContext="{Binding Tuesday}"
              Style="{StaticResource DayLabelStyle}"
-             Text="{Binding Date, StringFormat='tis
-             {0:dd/MM}'}"
+             Text="{Binding Date, StringFormat={x:Static strings:Week.TuesdayFormat}}"
              Grid.Column="{StaticResource ColumnTuesday}"
              Grid.Row="{StaticResource RowHeaders}" />
       <Label BindingContext="{Binding Wednesday}"
              Style="{StaticResource DayLabelStyle}"
-             Text="{Binding Date, StringFormat='ons
-             {0:dd/MM}'}"
+             Text="{Binding Date, StringFormat={x:Static strings:Week.WednesdayFormat}}"
              Grid.Column="{StaticResource ColumnWednesday}"
              Grid.Row="{StaticResource RowHeaders}" />
       <Label BindingContext="{Binding Thursday}"
              Style="{StaticResource DayLabelStyle}"
-             Text="{Binding Date, StringFormat='tors
-             {0:dd/MM}'}"
+             Text="{Binding Date, StringFormat={x:Static strings:Week.ThursdayFormat}}"
              Grid.Column="{StaticResource ColumnThursday}"
              Grid.Row="{StaticResource RowHeaders}" />
       <Label BindingContext="{Binding Friday}"
              Style="{StaticResource DayLabelStyle}"
-             Text="{Binding Date, StringFormat='fre
-             {0:dd/MM}'}"
+             Text="{Binding Date, StringFormat={x:Static strings:Week.FridayFormat}}"
              Grid.Column="{StaticResource ColumnFriday}"
              Grid.Row="{StaticResource RowHeaders}" />
       <Label BindingContext="{Binding Saturday}"
              Style="{StaticResource DayLabelStyle}"
-             Text="{Binding Date, StringFormat='lör
-             {0:dd/MM}'}"
+             Text="{Binding Date, StringFormat={x:Static strings:Week.SaturdayFormat}}"
              Grid.Column="{StaticResource ColumnSaturday}"
              Grid.Row="{StaticResource RowHeaders}" />
       <Label BindingContext="{Binding Sunday}"
              Style="{StaticResource DayLabelStyle}"
-             Text="{Binding Date, StringFormat='sön
-             {0:dd/MM}'}"
+             Text="{Binding Date, StringFormat={x:Static strings:Week.SundayFormat}}"
              Grid.Column="{StaticResource ColumnSunday}"
              Grid.Row="{StaticResource RowHeaders}" />
     </Grid>
