@@ -2,28 +2,50 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KitsTajmMobile.Views.LoginPage"
-             xmlns:viewmodels="clr-namespace:KitsTajmMobile.ViewModels;assembly=KitsTajmMobile"
-             xmlns:strings="clr-namespace:KitsTajmMobile.Strings;assembly=KitsTajmMobile">
+             xmlns:controls="clr-namespace:KitsTajmMobile.Controls;assembly=KitsTajmMobile"
+             xmlns:strings="clr-namespace:KitsTajmMobile.Strings;assembly=KitsTajmMobile"
+             xmlns:viewmodels="clr-namespace:KitsTajmMobile.ViewModels;assembly=KitsTajmMobile">
   <ContentPage.Resources>
     <ResourceDictionary>
       <viewmodels:LoginViewModel x:Key="model" />
-      <Style x:Key="UserNameLabelStyle" TargetType="Label">
+      <Style x:Key="GridStyle" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="#fff" />
+      </Style>
+      <Style x:Key="LoginLabelBaseStyle" TargetType="Label">
         <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="TextColor" Value="#333" />
         <Setter Property="VerticalOptions" Value="Center" />
       </Style>
-      <Style x:Key="UserNameEntryStyle" TargetType="Entry">
+      <Style x:Key="UserNameLabelStyle" BasedOn="{StaticResource LoginLabelBaseStyle}" TargetType="Label">
+      </Style>
+      <Style x:Key="PasswordLabelStyle" BasedOn="{StaticResource LoginLabelBaseStyle}" TargetType="Label">
+      </Style>
+      <Style x:Key="LoginEntryBaseStyle" TargetType="controls:ExtendedEntry">
+        <Setter Property="BackgroundColor" Value="#f2f2ee" />
+        <Setter Property="TextColor" Value="#333" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="WidthRequest" Value="200" />
+        <Style.Triggers>
+          <Trigger TargetType="controls:ExtendedEntry"
+                   Property="IsFocused"
+                   Value="True">
+            <Setter Property="BorderColor" Value="#f05d1a" />
+            <Setter Property="BorderWidth" Value="2" />
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+      <Style x:Key="UserNameEntryStyle" BasedOn="{StaticResource LoginEntryBaseStyle}" TargetType="controls:ExtendedEntry">
         <Setter Property="Keyboard" Value="Email" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="200" />
       </Style>
-      <Style x:Key="PasswordLabelStyle" TargetType="Label">
-        <Setter Property="HorizontalOptions" Value="End" />
-        <Setter Property="VerticalOptions" Value="Center" />
-      </Style>
-      <Style x:Key="PasswordEntryStyle" TargetType="Entry">
+      <Style x:Key="PasswordEntryStyle" BasedOn="{StaticResource LoginEntryBaseStyle}" TargetType="controls:ExtendedEntry">
         <Setter Property="IsPassword" Value="true" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="WidthRequest" Value="200" />
+      </Style>
+      <Style x:Key="LoginSwitchBaseStyle" TargetType="Switch">
+        <!--<Setter Property="BackgroundColor" Value="#f05d1a" />-->
+      </Style>
+      <Style x:Key="UserNameSwitchStyle" BasedOn="{StaticResource LoginSwitchBaseStyle}" TargetType="Switch">
+      </Style>
+      <Style x:Key="PasswordSwitchStyle" BasedOn="{StaticResource LoginSwitchBaseStyle}" TargetType="Switch">
       </Style>
       <Style x:Key="ErrorMessageLabelStyle" TargetType="Label">
         <Setter Property="HorizontalOptions" Value="Start" />
@@ -31,13 +53,18 @@
         <Setter Property="TextColor" Value="Red" />
       </Style>
       <Style x:Key="LoginButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="#f2f2ee" />
+        <Setter Property="BorderColor" Value="#f05d1a" />
+        <Setter Property="BorderWidth" Value="1" />
         <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="TextColor" Value="#333" />
         <Setter Property="VerticalOptions" Value="Center" />
       </Style>
     </ResourceDictionary>
   </ContentPage.Resources>
   
-  <Grid BindingContext="{StaticResource model}">
+  <Grid BindingContext="{StaticResource model}"
+        Style="{StaticResource GridStyle}">
     <Grid.RowDefinitions>
       <RowDefinition Height="*" />
       <RowDefinition Height="Auto" />
@@ -58,26 +85,27 @@
            Style="{StaticResource UserNameLabelStyle}"
            Grid.Column="1"
            Grid.Row="1" />
-    <Entry Text="{Binding UserName}"
-           Style="{StaticResource UserNameEntryStyle}"
-           Grid.Column="2"
-           Grid.Row="1" />
-    <Switch Grid.Column="3"
+    <controls:ExtendedEntry Text="{Binding UserName}"
+                            Style="{StaticResource UserNameEntryStyle}"
+                            Grid.Column="2"
+                            Grid.Row="1" />
+    <Switch Style="{StaticResource UserNameSwitchStyle}"
+            Grid.Column="3"
             Grid.Row="1"
-            IsToggled="{Binding SaveUserName}"
-            x:Name="switchSaveUserName" />
+            IsToggled="{Binding SaveUserName}" />
 
     <Label Text="{x:Static strings:Login.Password}"
            Style="{StaticResource PasswordLabelStyle}"
            Grid.Column="1"
            Grid.Row="2"/>
-    <Entry Text="{Binding Password}"
-           Style="{StaticResource PasswordEntryStyle}"
-           Grid.Column="2"
-           Grid.Row="2" />
-    <Switch Grid.Column="3"
+    <controls:ExtendedEntry Text="{Binding Password}"
+                            Style="{StaticResource PasswordEntryStyle}"
+                            Grid.Column="2"
+                            Grid.Row="2" />
+    <Switch Style="{StaticResource PasswordSwitchStyle}"
+            Grid.Column="3"
             Grid.Row="2"
-            IsEnabled="{Binding IsToggled, Source={x:Reference switchSaveUserName}}"
+            IsEnabled="{Binding SaveUserName}"
             IsToggled="{Binding SavePassword}" />
 
     <Label Text="{Binding ErrorMessage}"
@@ -85,7 +113,7 @@
            Grid.Column="1"
            Grid.ColumnSpan="2"
            Grid.Row="3" />
-    
+
     <Button IsEnabled="{Binding CanLogin}"
             Text="{x:Static strings:Login.LogIn}"
             Style="{StaticResource LoginButtonStyle}"

@@ -238,7 +238,7 @@ namespace KitsTajmMobile.Helpers
 
         private static DateTime GetFörstaMaj(int year)
         {
-            var förstamaj =  new DateTime(DateTime.UtcNow.Year, 5, 1);
+            var förstamaj =  new DateTime(year, 5, 1);
 
             return förstamaj;
         }
@@ -269,7 +269,7 @@ namespace KitsTajmMobile.Helpers
 
         private static DateTime GetNationaldagen(int year)
         {
-            var nationaldagen = new DateTime(DateTime.UtcNow.Year, 6, 6);
+            var nationaldagen = new DateTime(year, 6, 6);
 
             return nationaldagen;
         }
@@ -300,7 +300,7 @@ namespace KitsTajmMobile.Helpers
 
         private static DateTime GetJuldagen(int year)
         {
-            var juldagen = new DateTime(DateTime.UtcNow.Year, 12, 25);
+            var juldagen = new DateTime(year, 12, 25);
 
             return juldagen;
         }
