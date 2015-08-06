@@ -19,20 +19,29 @@
       <x:Int32 x:Key="ColumnFriday">6</x:Int32>
       <x:Int32 x:Key="ColumnSaturday">7</x:Int32>
       <x:Int32 x:Key="ColumnSunday">8</x:Int32>
-      <Style x:Key="WeekNumberLabelStyle" TargetType="Label">
+      <Style x:Key="GridStyle" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="#fff" />
+      </Style>
+      <Style x:Key="WeekLabelBaseStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="#333" />
+      </Style>
+      <Style x:Key="WeekNumberLabelStyle" BasedOn="{StaticResource WeekLabelBaseStyle}" TargetType="Label">
         <Setter Property="VerticalOptions" Value="Center" />
       </Style>
-      <Style x:Key="WeekProgressStyle" TargetType="controls:AnimatingProgressBar">
+      <Style x:Key="WeekProgressBarBaseStyle" TargetType="controls:ExtendedProgressBar">
+        <Setter Property="ProgressColor" Value="#f05d1a" />
+      </Style>
+      <Style x:Key="WeekProgressStyle" BasedOn="{StaticResource WeekProgressBarBaseStyle}" TargetType="controls:AnimatingProgressBar">
         <Setter Property="Easing" Value="SinInOut" />
         <Setter Property="Length" Value="0:0:0.500" />
       </Style>
-      <Style x:Key="WeekProgressTextStyle" TargetType="Label">
+      <Style x:Key="WeekProgressTextStyle" BasedOn="{StaticResource WeekLabelBaseStyle}" TargetType="Label">
         <Setter Property="HorizontalOptions" Value="Center" />
       </Style>
       <Style x:Key="WeekGridStyle" TargetType="Grid">
         <Setter Property="VerticalOptions" Value="StartAndExpand" />
       </Style>
-      <Style x:Key="HeaderLabelStyle" TargetType="Label">
+      <Style x:Key="HeaderLabelStyle" BasedOn="{StaticResource WeekLabelBaseStyle}" TargetType="Label">
         <Setter Property="VerticalOptions" Value="Start" />
       </Style>
       <Style x:Key="ProjectAndActivityLabelStyle"
@@ -48,23 +57,27 @@
           <DataTrigger TargetType="Label"
                        Binding="{Binding Type}"
                        Value="{x:Static viewmodels:WeekViewModel+DateViewModel+DateType.Helgdag}">
-            <Setter Property="BackgroundColor" Value="Red"/>
+            <Setter Property="BackgroundColor" Value="#f3c4c4"/>
           </DataTrigger>
           <DataTrigger TargetType="Label"
                        Binding="{Binding Type}"
                        Value="{x:Static viewmodels:WeekViewModel+DateViewModel+DateType.Helgdagsafton}">
-            <Setter Property="BackgroundColor" Value="Blue"/>
+            <Setter Property="BackgroundColor" Value="#c4e3f3"/>
           </DataTrigger>
         </Style.Triggers>
       </Style>
-      <Style x:Key="ProjectAndActivityPickerStyle" TargetType="Picker">
-        <Setter Property="VerticalOptions" Value="Start" />
+      <Style x:Key="ProjectAndActivityPickerStyle" TargetType="controls:ExtendedPicker">
+        <Setter Property="BackgroundColor" Value="#f2f2ee" />
         <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+        <Setter Property="TextColor" Value="#333" />
+        <Setter Property="VerticalOptions" Value="Start" />
       </Style>
       <Style x:Key="DayEntryStyle" TargetType="Entry">
-        <Setter Property="Keyboard" Value="Numeric" />
-        <Setter Property="VerticalOptions" Value="Start" />
+        <Setter Property="BackgroundColor" Value="#f2f2ee" />
         <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+        <Setter Property="Keyboard" Value="Numeric" />
+        <Setter Property="TextColor" Value="#333" />
+        <Setter Property="VerticalOptions" Value="Start" />
         <Style.Triggers>
           <DataTrigger TargetType="Entry"
                        Binding="{Binding IsValid}"
@@ -73,19 +86,20 @@
           </DataTrigger>
         </Style.Triggers>
       </Style>
-      <Style x:Key="MonthProgressMonthLabelStyle" TargetType="Label">
+      <Style x:Key="MonthProgressMonthLabelStyle" BasedOn="{StaticResource WeekLabelBaseStyle}" TargetType="Label">
       </Style>
-      <Style x:Key="MonthProgressbarStyle" TargetType="controls:AnimatingProgressBar">
+      <Style x:Key="MonthProgressbarStyle" BasedOn="{StaticResource WeekProgressBarBaseStyle}" TargetType="controls:AnimatingProgressBar">
         <Setter Property="Easing" Value="SinInOut" />
         <Setter Property="Length" Value="0:0:0.500" />
       </Style>
-      <Style x:Key="MonthProgressbarTextStyle" TargetType="Label">
+      <Style x:Key="MonthProgressbarTextStyle" BasedOn="{StaticResource WeekLabelBaseStyle}" TargetType="Label">
         <Setter Property="HorizontalOptions" Value="Center" />
       </Style>
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <Grid BindingContext="{DynamicResource Model}">
+  <Grid BindingContext="{DynamicResource Model}"
+        Style="{StaticResource GridStyle}">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
       <RowDefinition Height="*" />

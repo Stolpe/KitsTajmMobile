@@ -374,7 +374,10 @@ namespace KitsTajmMobile.ViewModels
                 switch (e.PropertyName)
                 {
                     case nameof(ProjectViewModel.SelectedItem):
-                        this.RowNumber = this._weekmodel.Rows.Count - 1;
+                        if (this._rownumber == null)
+                        {
+                            this.RowNumber = this._weekmodel.Rows.Count - 1;
+                        }
 
                         NotifyPropertyChanged(nameof(IsEmpty));
                         break;

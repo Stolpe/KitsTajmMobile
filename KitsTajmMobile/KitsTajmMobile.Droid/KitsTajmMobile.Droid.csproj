@@ -98,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\ExtendedSwitchRenderer.cs" />
+    <Compile Include="Renderers\ExtendedProgressBarRenderer.cs" />
+    <Compile Include="Renderers\ExtendedPickerRenderer.cs" />
     <Compile Include="Renderers\ExtendedEntryRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -80,6 +80,24 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Av.
+        /// </summary>
+        internal static string SwitchOff {
+            get {
+                return ResourceManager.GetString("SwitchOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spara.
+        /// </summary>
+        internal static string SwitchOn {
+            get {
+                return ResourceManager.GetString("SwitchOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Användarnamn.
         /// </summary>
         internal static string UserName {

@@ -40,12 +40,17 @@
       <Style x:Key="PasswordEntryStyle" BasedOn="{StaticResource LoginEntryBaseStyle}" TargetType="controls:ExtendedEntry">
         <Setter Property="IsPassword" Value="true" />
       </Style>
-      <Style x:Key="LoginSwitchBaseStyle" TargetType="Switch">
-        <!--<Setter Property="BackgroundColor" Value="#f05d1a" />-->
+      <Style x:Key="LoginSwitchBaseStyle" TargetType="controls:ExtendedSwitch">
+        <Setter Property="DisabledColor" Value="Gray" />
+        <Setter Property="OffColor" Value="#333" />
+        <Setter Property="OffText" Value="{x:Static strings:Login.SwitchOff}" />
+        <Setter Property="OnColor" Value="#f05d1a" />
+        <Setter Property="OnText" Value="{x:Static strings:Login.SwitchOn}" />
+        <Setter Property="TrackColor" Value="#f2f2ee" />
       </Style>
-      <Style x:Key="UserNameSwitchStyle" BasedOn="{StaticResource LoginSwitchBaseStyle}" TargetType="Switch">
+      <Style x:Key="UserNameSwitchStyle" BasedOn="{StaticResource LoginSwitchBaseStyle}" TargetType="controls:ExtendedSwitch">
       </Style>
-      <Style x:Key="PasswordSwitchStyle" BasedOn="{StaticResource LoginSwitchBaseStyle}" TargetType="Switch">
+      <Style x:Key="PasswordSwitchStyle" BasedOn="{StaticResource LoginSwitchBaseStyle}" TargetType="controls:ExtendedSwitch">
       </Style>
       <Style x:Key="ErrorMessageLabelStyle" TargetType="Label">
         <Setter Property="HorizontalOptions" Value="Start" />
@@ -62,7 +67,7 @@
       </Style>
     </ResourceDictionary>
   </ContentPage.Resources>
-  
+
   <Grid BindingContext="{StaticResource model}"
         Style="{StaticResource GridStyle}">
     <Grid.RowDefinitions>
@@ -89,10 +94,10 @@
                             Style="{StaticResource UserNameEntryStyle}"
                             Grid.Column="2"
                             Grid.Row="1" />
-    <Switch Style="{StaticResource UserNameSwitchStyle}"
-            Grid.Column="3"
-            Grid.Row="1"
-            IsToggled="{Binding SaveUserName}" />
+    <controls:ExtendedSwitch Style="{StaticResource UserNameSwitchStyle}"
+                             Grid.Column="3"
+                             Grid.Row="1"
+                             IsToggled="{Binding SaveUserName}" />
 
     <Label Text="{x:Static strings:Login.Password}"
            Style="{StaticResource PasswordLabelStyle}"
@@ -102,11 +107,11 @@
                             Style="{StaticResource PasswordEntryStyle}"
                             Grid.Column="2"
                             Grid.Row="2" />
-    <Switch Style="{StaticResource PasswordSwitchStyle}"
-            Grid.Column="3"
-            Grid.Row="2"
-            IsEnabled="{Binding SaveUserName}"
-            IsToggled="{Binding SavePassword}" />
+    <controls:ExtendedSwitch Style="{StaticResource PasswordSwitchStyle}"
+                             Grid.Column="3"
+                             Grid.Row="2"
+                             IsEnabled="{Binding SaveUserName}"
+                             IsToggled="{Binding SavePassword}" />
 
     <Label Text="{Binding ErrorMessage}"
            Style="{StaticResource ErrorMessageLabelStyle}"

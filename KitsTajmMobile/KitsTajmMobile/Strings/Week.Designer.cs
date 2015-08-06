@@ -91,7 +91,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to januari.
+        ///   Looks up a localized string similar to Januari.
         /// </summary>
         internal static string Month1 {
             get {
@@ -100,7 +100,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to oktober.
+        ///   Looks up a localized string similar to Oktober.
         /// </summary>
         internal static string Month10 {
             get {
@@ -109,7 +109,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to november.
+        ///   Looks up a localized string similar to November.
         /// </summary>
         internal static string Month11 {
             get {
@@ -118,7 +118,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to december.
+        ///   Looks up a localized string similar to December.
         /// </summary>
         internal static string Month12 {
             get {
@@ -127,7 +127,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to februari.
+        ///   Looks up a localized string similar to Februari.
         /// </summary>
         internal static string Month2 {
             get {
@@ -136,7 +136,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to mars.
+        ///   Looks up a localized string similar to Mars.
         /// </summary>
         internal static string Month3 {
             get {
@@ -145,7 +145,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to april.
+        ///   Looks up a localized string similar to April.
         /// </summary>
         internal static string Month4 {
             get {
@@ -154,7 +154,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to maj.
+        ///   Looks up a localized string similar to Maj.
         /// </summary>
         internal static string Month5 {
             get {
@@ -163,7 +163,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to juni.
+        ///   Looks up a localized string similar to Juni.
         /// </summary>
         internal static string Month6 {
             get {
@@ -172,7 +172,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to juli.
+        ///   Looks up a localized string similar to Juli.
         /// </summary>
         internal static string Month7 {
             get {
@@ -181,7 +181,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to augusti.
+        ///   Looks up a localized string similar to Augusti.
         /// </summary>
         internal static string Month8 {
             get {
@@ -190,7 +190,7 @@ namespace KitsTajmMobile.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to september.
+        ///   Looks up a localized string similar to September.
         /// </summary>
         internal static string Month9 {
             get {

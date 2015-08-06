@@ -38,6 +38,9 @@
     <Compile Include="App.cs" />
     <Compile Include="Controls\AnimatingProgressBar.cs" />
     <Compile Include="Controls\BindablePicker.cs" />
+    <Compile Include="Controls\ExtendedSwitch.cs" />
+    <Compile Include="Controls\ExtendedProgressBar.cs" />
+    <Compile Include="Controls\ExtendedPicker.cs" />
     <Compile Include="Controls\ExtendedEntry.cs" />
     <Compile Include="Controls\TypeConverters\EasingTypeConverter.cs" />
     <Compile Include="Converters\RowNumberToGridNumberConverter.cs" />

@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace KitsTajmMobile.Controls
 {
-    public class BindablePicker<T> : Picker
+    public class BindablePicker<T> : ExtendedPicker
     {
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create<BindablePicker<T>, IList<T>>(p => p.ItemsSource, default(IList<T>), propertyChanged: OnItemsSourceChanged);

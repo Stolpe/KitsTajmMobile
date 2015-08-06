@@ -4,14 +4,18 @@ using Xamarin.Forms;
 
 namespace KitsTajmMobile.Controls
 {
-    public class AnimatingProgressBar : ProgressBar
+    public class AnimatingProgressBar : ExtendedProgressBar
     {
-        public static readonly BindableProperty AnimatedProgressProperty =
-            BindableProperty.Create<AnimatingProgressBar, double>(p => p.AnimatedProgress, default(double), propertyChanged: OnAnimatedProgressChanged);
-        public static readonly BindableProperty EasingProperty =
-            BindableProperty.Create<AnimatingProgressBar, Easing>(p => p.Easing, default(Easing));
-        public static readonly BindableProperty LengthProperty =
-            BindableProperty.Create<AnimatingProgressBar, TimeSpan>(p => p.Length, default(TimeSpan));
+        public static readonly BindableProperty AnimatedProgressProperty = BindableProperty.Create<AnimatingProgressBar, double>(
+            p => p.AnimatedProgress,
+            default(double),
+            propertyChanged: OnAnimatedProgressChanged);
+        public static readonly BindableProperty EasingProperty = BindableProperty.Create<AnimatingProgressBar, Easing>(
+            p => p.Easing,
+            default(Easing));
+        public static readonly BindableProperty LengthProperty = BindableProperty.Create<AnimatingProgressBar, TimeSpan>(
+            p => p.Length,
+            default(TimeSpan));
 
         public double AnimatedProgress
         {

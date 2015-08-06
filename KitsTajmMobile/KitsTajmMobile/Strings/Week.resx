@@ -129,40 +129,40 @@
 {0:dd/MM}</value>
   </data>
   <data name="Month1" xml:space="preserve">
-    <value>januari</value>
+    <value>Januari</value>
   </data>
   <data name="Month10" xml:space="preserve">
-    <value>oktober</value>
+    <value>Oktober</value>
   </data>
   <data name="Month11" xml:space="preserve">
-    <value>november</value>
+    <value>November</value>
   </data>
   <data name="Month12" xml:space="preserve">
-    <value>december</value>
+    <value>December</value>
   </data>
   <data name="Month2" xml:space="preserve">
-    <value>februari</value>
+    <value>Februari</value>
   </data>
   <data name="Month3" xml:space="preserve">
-    <value>mars</value>
+    <value>Mars</value>
   </data>
   <data name="Month4" xml:space="preserve">
-    <value>april</value>
+    <value>April</value>
   </data>
   <data name="Month5" xml:space="preserve">
-    <value>maj</value>
+    <value>Maj</value>
   </data>
   <data name="Month6" xml:space="preserve">
-    <value>juni</value>
+    <value>Juni</value>
   </data>
   <data name="Month7" xml:space="preserve">
-    <value>juli</value>
+    <value>Juli</value>
   </data>
   <data name="Month8" xml:space="preserve">
-    <value>augusti</value>
+    <value>Augusti</value>
   </data>
   <data name="Month9" xml:space="preserve">
-    <value>september</value>
+    <value>September</value>
   </data>
   <data name="Project" xml:space="preserve">
     <value>Projekt</value>

@@ -123,6 +123,12 @@
   <data name="Password" xml:space="preserve">
     <value>Lösenord</value>
   </data>
+  <data name="SwitchOff" xml:space="preserve">
+    <value>Av</value>
+  </data>
+  <data name="SwitchOn" xml:space="preserve">
+    <value>Spara</value>
+  </data>
   <data name="UserName" xml:space="preserve">
     <value>Användarnamn</value>
   </data>
